@@ -1,0 +1,20 @@
+{
+  "name": "bulletinboard-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2sumin2/bulletinboard-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2sumin2/bulletinboard-backend/issues"
+  },
+  "homepage": "https://github.com/2sumin2/bulletinboard-backend#readme"
+}
