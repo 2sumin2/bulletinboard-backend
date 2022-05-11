@@ -14,10 +14,10 @@ export default {
                     where: { email }
                 });
                 if (existingUser) {
-                    throw new Error("This email is already taken.");
+                    throw new Error("이미 존재하는 이메일입니다.");
                 }
                 const uglyPassword = await bcrypt.hash(password, 10);
-                return client.user.create({
+                await client.user.create({
                     data: {
                         name,
                         email,
@@ -25,8 +25,14 @@ export default {
                         password: uglyPassword,
                     },
                 });
+                return {
+                    ok: true,
+                };
             } catch (e) {
-                return e;
+                return {
+                    ok: false,
+                    error: "이미 존재하는 이메일입니다.",
+                };
             }
         },
     }

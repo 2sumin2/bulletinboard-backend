@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import client from "../../client";
-import { Jwt } from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 export default {
     Mutation: {
@@ -9,17 +9,17 @@ export default {
             if (!user) {
                 return {
                     ok: false,
-                    error: "User not found.",
+                    error: "사용자를 찾을 수 없습니다.",
                 };
             }
             const passwordOk = await bcrypt.compare(password, user.password);
             if (!passwordOk) {
                 return {
                     ok: false,
-                    error: "Incorrect password.",
+                    error: "잘못된 패스워드입니다.",
                 };
             }
-            const token = await Jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+            const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
             return {
                 ok: true,
                 token,
