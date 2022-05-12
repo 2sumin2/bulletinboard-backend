@@ -9,9 +9,9 @@ export default gql`
         createBoard(
             classification: String!
             title: String!
-            authorId: Int
-            deadLine: String
-            content: String
+            authorId: Int!
+            deadline: String!
+            content: String!
             attachedFile: String
         ): createBoardResult
     }
