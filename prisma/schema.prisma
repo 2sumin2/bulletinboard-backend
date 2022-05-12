@@ -23,17 +23,17 @@ model User {
 }
 
 model Board {
-  id           Int      @id @default(autoincrement())
-  class        String
-  title        String
-  author       User     @relation(fields: [authorId], references: [id])
-  authorId     Int
-  deadLine     String
-  content      String
-  attachedFile String
-  createAt     DateTime @default(now())
-  updateAt     DateTime @updatedAt
-  files        File[]
+  id             Int       @id @default(autoincrement())
+  classification String
+  title          String
+  author         User      @relation(fields: [authorId], references: [id])
+  authorId       Int
+  deadline       DateTime?
+  content        String?
+  attachedFile   String?
+  createAt       DateTime  @default(now())
+  updateAt       DateTime  @updatedAt
+  files          File[]
 }
 
 model File {
