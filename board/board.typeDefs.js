@@ -5,7 +5,7 @@ export default gql`
         id: Int!
         classification: String!
         title: String!
-        authorId: String
+        authorId: Int
         deadLine: String
         content: String
         attachedFile: String
