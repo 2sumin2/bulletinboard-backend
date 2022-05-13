@@ -50,7 +50,7 @@ export default {
             } catch (e) {
                 return {
                     ok: false,
-                    error: e,
+                    error: "게시글을 삭제할 수 없습니다.",
                 };
             }
         },
