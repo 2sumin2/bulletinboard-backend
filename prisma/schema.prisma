@@ -21,7 +21,7 @@ model User {
 }
 
 model Board {
-  id             Int      @id @default(autoincrement())
+  id             Int      @id
   classification String
   title          String
   authorId       Int

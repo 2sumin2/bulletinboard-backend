@@ -14,6 +14,15 @@ export default {
             content,
             attachedFile,
         }) => {
+            var lastId = 1;
+            const lastBoard = await client.board.findMany({
+                orderBy: {
+                    id: 'desc',
+                },
+                take: 1,
+            });
+            lastId = lastBoard[0].id;
+
             try {
                 let attachedFileUrl = null;
                 if (attachedFile) {
@@ -28,6 +37,7 @@ export default {
                 }
                 await client.board.create({
                     data: {
+                        id: lastId + 1,
                         classification,
                         title,
                         authorId,
