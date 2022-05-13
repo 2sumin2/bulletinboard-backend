@@ -5,7 +5,7 @@ export default {
         seeList: async (_,) => {
             return client.board.findMany({
                 orderBy: {
-                    id: 'asc',
+                    id: 'desc',
                 },
             })
         }
