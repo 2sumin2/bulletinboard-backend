@@ -1,7 +1,6 @@
 import fs from "fs"
 import client from "../../client";
 import { GraphQLUpload } from "graphql-upload";
-import bcrypt from "bcrypt";
 
 export default {
     Upload: GraphQLUpload,
@@ -14,7 +13,7 @@ export default {
             content,
             attachedFile,
         }) => {
-            var lastId = 1;
+            var lastId = 0;
             const lastBoard = await client.board.findMany({
                 orderBy: {
                     id: 'desc',
