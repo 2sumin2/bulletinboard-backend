@@ -1,6 +1,7 @@
 import { gql } from "apollo-server";
 
 export default gql`
+    scalar Upload
     type createBoardResult {
         ok:Boolean!
         error: String
@@ -12,7 +13,7 @@ export default gql`
             authorId: Int!
             deadline: String!
             content: String!
-            attachedFile: String
+            attachedFile: Upload
         ): createBoardResult
     }
 `;

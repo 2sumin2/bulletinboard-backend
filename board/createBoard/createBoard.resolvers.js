@@ -1,6 +1,10 @@
+import fs from "fs"
 import client from "../../client";
+import { GraphQLUpload } from "graphql-upload";
+import bcrypt from "bcrypt";
 
 export default {
+    Upload: GraphQLUpload,
     Mutation: {
         createBoard: async (_, {
             classification,
@@ -11,6 +15,17 @@ export default {
             attachedFile,
         }) => {
             try {
+                let attachedFileUrl = null;
+                if (attachedFile) {
+
+                    const { filename, createReadStream } = await attachedFile;
+                    const readsStream = createReadStream();
+                    const newFilename = `${authorId}-${Date.now()}-${filename}`;
+                    const writeStream = fs.createWriteStream(process.cwd() + "/uploads/" + newFilename);
+                    readsStream.pipe(writeStream);
+
+                    attachedFileUrl = `http://localhost:4000/static/${newFilename}`;
+                }
                 await client.board.create({
                     data: {
                         classification,
@@ -18,16 +33,16 @@ export default {
                         authorId,
                         deadline,
                         content,
-                        attachedFile,
+                        ...(attachedFileUrl && { attachedFile: attachedFileUrl }),
                     },
-                });
+                })
                 return {
                     ok: true,
                 };
             } catch (e) {
                 return {
                     ok: false,
-                    error: "게시글을 생성할 수 없습니다.",
+                    error: e,
                 };
             }
         },

@@ -6,8 +6,8 @@ export default gql`
         classification: String!
         title: String!
         authorId: Int
-        deadline: String
-        content: String
+        deadline: String!
+        content: String!
         attachedFile: String
         createAt: String!
         updateAt:String!
