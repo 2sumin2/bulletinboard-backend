@@ -12,6 +12,7 @@ export default {
             deadline,
             content,
             attachedFile,
+            attachedFileUrl
         }) => {
             var lastId = 0;
             const lastBoard = await client.board.findMany({
@@ -23,7 +24,9 @@ export default {
             lastId = lastBoard[0].id;
 
             try {
-                let attachedFileUrl = null;
+                if (!attachedFileUrl) {
+                    attachedFileUrl = '';
+                }
                 if (attachedFile) {
 
                     const { filename, createReadStream } = await attachedFile;
@@ -34,6 +37,7 @@ export default {
 
                     attachedFileUrl = `http://localhost:4000/static/${newFilename}`;
                 }
+
                 await client.board.create({
                     data: {
                         id: lastId + 1,
@@ -42,7 +46,7 @@ export default {
                         authorId,
                         deadline,
                         content,
-                        ...(attachedFileUrl && { attachedFile: attachedFileUrl }),
+                        attachedFileUrl: (attachedFileUrl == '') ? null : attachedFileUrl,
                     },
                 })
                 return {

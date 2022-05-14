@@ -9,6 +9,7 @@ export default gql`
         deadline: String!
         content: String!
         attachedFile: String
+        attachedFileUrl: String
         createAt: String!
         updateAt:String!
     }

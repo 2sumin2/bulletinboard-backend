@@ -14,6 +14,7 @@ export default gql`
             deadline: String!
             content: String!
             attachedFile: Upload
+            attachedFileUrl: String
         ): createBoardResult
     }
 `;

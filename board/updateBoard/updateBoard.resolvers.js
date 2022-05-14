@@ -13,10 +13,13 @@ export default {
             deadline,
             content,
             attachedFile,
+            attachedFileUrl
         }) => {
 
             try {
-                let attachedFileUrl = null;
+                if (!attachedFileUrl) {
+                    attachedFileUrl = '';
+                }
                 if (attachedFile) {
                     const { filename, createReadStream } = await attachedFile;
                     const readsStream = createReadStream();
@@ -36,7 +39,7 @@ export default {
                         authorId,
                         deadline,
                         content,
-                        ...(attachedFileUrl && { attachedFile: attachedFileUrl }),
+                        attachedFileUrl: (attachedFileUrl == '') ? null : attachedFileUrl,
                     },
                 })
                 return {
@@ -45,7 +48,8 @@ export default {
             } catch (e) {
                 return {
                     ok: false,
-                    error: "게시글을 수정할 수 없습니다.",
+                    //error: "게시글을 수정할 수 없습니다.",
+                    error: e,
                 };
             }
         },

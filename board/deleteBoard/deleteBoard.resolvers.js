@@ -39,7 +39,7 @@ export default {
                             authorId: nextBoard[0].authorId,
                             deadline: nextBoard[0].deadline,
                             content: nextBoard[0].content,
-                            ...(nextBoard[0].attachedFileUrl && { attachedFile: nextBoard[0].attachedFileUrl }),
+                            ...(nextBoard[0].attachedFileUrl && { attachedFileUrl: nextBoard[0].attachedFileUrl }),
                         },
                     });
                     ++id

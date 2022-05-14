@@ -21,13 +21,14 @@ model User {
 }
 
 model Board {
-  id             Int      @id
-  classification String
-  title          String
-  authorId       Int
-  deadline       DateTime
-  content        String
-  attachedFile   String?
-  createAt       DateTime @default(now())
-  updateAt       DateTime @updatedAt
+  id              Int      @id
+  classification  String
+  title           String
+  authorId        Int
+  deadline        DateTime
+  content         String
+  attachedFile    String?
+  attachedFileUrl String?
+  createAt        DateTime @default(now())
+  updateAt        DateTime @updatedAt
 }
