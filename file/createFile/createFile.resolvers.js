@@ -7,7 +7,7 @@ export default {
     Mutation: {
         createFile: async (_, {
             url,
-            authorId,
+            authorCompany,
             boardId,
             upload
         }) => {
@@ -18,7 +18,7 @@ export default {
                 if (upload) {
                     const { filename, createReadStream } = await upload;
                     const readsStream = createReadStream();
-                    const newFilename = `${authorId}-${Date.now()}-${filename}`;
+                    const newFilename = `${authorCompany}-${Date.now()}-${filename}`;
                     const writeStream = fs.createWriteStream(process.cwd() + "/uploads/" + newFilename);
                     readsStream.pipe(writeStream);
 
@@ -28,7 +28,7 @@ export default {
                 await client.file.create({
                     data: {
                         url: (url == '') ? null : url,
-                        authorId,
+                        authorCompany,
                         boardId
                     },
                 })

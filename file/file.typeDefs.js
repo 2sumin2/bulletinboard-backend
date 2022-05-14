@@ -4,7 +4,7 @@ export default gql`
     type File{
         id: Int!
         url: String!
-        authorId: Int!
+        authorCompany: String!
         boardId: Int!
         upload: String
     }

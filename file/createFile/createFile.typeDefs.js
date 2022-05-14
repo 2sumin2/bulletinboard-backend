@@ -11,7 +11,7 @@ export default gql`
             url: String
             upload: Upload
             boardId: Int!
-            authorId:Int!
+            authorCompany:String!
         ): createFileResult
     }
 `;

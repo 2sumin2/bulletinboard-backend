@@ -15,20 +15,24 @@ export default {
             attachedFileUrl
         }) => {
             var lastId = 0;
-            const lastBoard = await client.board.findMany({
-                orderBy: {
-                    id: 'desc',
-                },
-                take: 1,
-            });
-            lastId = lastBoard[0].id;
+            try {
+                const lastBoard = await client.board.findMany({
+                    orderBy: {
+                        id: 'desc',
+                    },
+                    take: 1,
+                });
+                lastId = lastBoard[0].id;
+            } catch {
+                lastId = 0;
+            }
+
 
             try {
                 if (!attachedFileUrl) {
                     attachedFileUrl = '';
                 }
                 if (attachedFile) {
-
                     const { filename, createReadStream } = await attachedFile;
                     const readsStream = createReadStream();
                     const newFilename = `${authorId}-${Date.now()}-${filename}`;

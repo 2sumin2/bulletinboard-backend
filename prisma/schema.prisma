@@ -39,9 +39,9 @@ model Board {
 }
 
 model File {
-  id       Int     @id @default(autoincrement())
-  url      String
-  upload   String?
-  authorId Int
-  boardId  Int
+  id            Int     @id @default(autoincrement())
+  url           String
+  upload        String?
+  authorCompany String
+  boardId       Int
 }
