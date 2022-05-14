@@ -20,6 +20,11 @@ model User {
   updateAt DateTime @updatedAt
 }
 
+model Company {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
 model Board {
   id              Int      @id
   classification  String
