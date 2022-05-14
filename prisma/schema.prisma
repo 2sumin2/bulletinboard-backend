@@ -26,7 +26,7 @@ model Company {
 }
 
 model Board {
-  id              Int      @id
+  id              Int      @id @default(autoincrement())
   classification  String
   title           String
   authorId        Int
