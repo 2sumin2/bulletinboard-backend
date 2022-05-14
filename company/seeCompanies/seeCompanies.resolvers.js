@@ -5,7 +5,7 @@ export default {
         seeCompanies: async (_,) => {
             return client.company.findMany({
                 orderBy: {
-                    id: 'desc',
+                    id: 'asc',
                 },
             })
         }
