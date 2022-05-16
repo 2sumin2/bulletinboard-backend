@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
+  id       Int      @id @unique @default(autoincrement())
   name     String
   email    String   @unique
   company  String
@@ -26,7 +26,7 @@ model Company {
 }
 
 model Board {
-  id              Int      @id @default(autoincrement())
+  id              Int      @id @unique @default(autoincrement())
   classification  String
   title           String
   authorId        Int
@@ -39,7 +39,7 @@ model Board {
 }
 
 model File {
-  id            Int     @id @default(autoincrement())
+  id            Int     @id @unique @default(autoincrement())
   url           String
   upload        String?
   authorCompany String
